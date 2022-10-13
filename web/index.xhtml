@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>iMed-Storing</title>
+        <link rel="icon" type="image/png" href="assets/ico/ico.png" />
+    </h:head>
+    <h:body >
+<center>   
+    
+    <b:container fluid="true">
+        <b:form horizontal="true"  >
+            <b:row>
+                <b:column medium-screen="3"/>
+                <b:column medium-screen="6" style="margin: 50px;">
+                    <img src="assets/ico/logo.png" width="350"  style="margin-bottom: 50px"/>
+                  <h1 >Staff Login</h1>  
+                </b:column>
+                <b:column medium-screen="3"/>
+            </b:row>
+            
+          <b:row>
+          <b:column medium-screen="3"/>
+          <b:column medium-screen="6">
+              <b:inputText placeholder="Staff Username" class="lgn" validatorMessage="USERNAME IS EMPTY" value="#{stf.username}" >
+            <f:facet name="prepend">
+              <b:icon name="user" />
+            </f:facet>
+            <f:validateRequired/>
+          </b:inputText>
+          </b:column>
+          <b:column medium-screen="3"/>
+          </b:row>
+            
+            <b:row>
+                <b:column medium-screen="3"/>
+                <b:column medium-screen="6">
+                    <b:inputSecret class="lgn" placeholder="Staff Password"  validatorMessage="PASSWORD IS EMPTY"  value="#{stf.password}">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="key" />
+                        </f:facet>
+                        <f:validateRequired/>
+                    </b:inputSecret>        
+                </b:column>
+                <b:column medium-screen="3"/>      
+            </b:row>
+            
+            <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="6">
+                 <b:messages/>
+              </b:column>
+              <b:column medium-screen="3"/>
+            </b:row>
+            
+            <b:row>
+                <b:column medium-screen="3"/>
+                <b:column medium-screen="3">
+                    <b:button look="danger" value="Reset" onclick="
+                    setTimeout(function(){
+                    $('.lgn').val('');return false;
+                    }, 100);" 
+                     tooltip-position="right" style="margin: 10px; width: 100px;"/>
+                </b:column>
+                <b:column medium-screen="3">
+                    <b:commandButton action="#{stf.login()}" tooltip-position="right"
+                    value="Login" class="btn btn-success" style="margin: 10px; width: 100px;" ></b:commandButton>
+                </b:column>
+                <b:column medium-screen="3"/>
+            </b:row>
+            <b:row>
+                 <b:column medium-screen="3"/>
+                 <b:column medium-screen="6">
+                     <p>Click <a id="regstaff" href="#"  onclick="$('.regstaff').modal()" style="margin-top: 25px; margin-bottom: 50px">Here</a> To Create Account</p>
+                 </b:column>
+                 <b:column medium-screen="3"/>
+            </b:row>
+        </b:form>
+        
+    </b:container>
+    <b:modal id="regstaff" title="Staff Registration" styleClass="regstaff">
+  <b:form horizontal="true">
+      <b:inputText placeholder="Staff Username" label="Staff Username:" colMd="10" labelColMd="2" class="reg" value="#{stf.username}" validatorMessage="PLEASE INPUT THE USERNAME!!">
+    <f:facet name="prepend">
+      <b:icon name="user" />
+    </f:facet>
+  <f:validateRequired/> 
+  </b:inputText>
+      <b:inputSecret placeholder="Staff Password" label="Staff Password:" colMd="10" labelColMd="2" class="reg" value="#{stf.password}" validatorMessage="PLEASE INPUT THE PASSWORD!!" >
+    <f:facet name="prepend">
+      <b:iconAwesome name="key" />
+    </f:facet>
+  <f:validateRequired/> 
+  </b:inputSecret>
+      <b:inputSecret placeholder="Token" label="Token:" colMd="10" labelColMd="2" class="reg" value="#{stf.icode}" validatorMessage="PLEASE INPUT THE TOKEN!!" >
+    <f:facet name="prepend">
+      <b:iconAwesome name="key" />
+    </f:facet>
+  <f:validateRequired/> 
+  </b:inputSecret>
+
+  <b:commandButton action="#{stf.regraff()}" tooltip-position="right" span="12"
+    value="Register" class="btn btn-success" style="margin-bottom: 20px;"></b:commandButton>
+ </b:form>
+         <div style="margin-bottom: 50px;"></div>
+  <f:facet name="footer">    
+    <b:button value="Cancel" dismiss="modal" />
+  </f:facet>
+         
+</b:modal>
+
+</center>
+    </h:body>
+</html>
+

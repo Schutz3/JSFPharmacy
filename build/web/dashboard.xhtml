@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>iMed-Dashboard</title>
+        <link rel="icon" type="image/png" href="assets/ico/ico.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <style>
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 250px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav.menu {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav.menu:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px; width: 100px;}
+  .sidenav.menu {font-size: 18px;}
+}
+    </style>
+    <h:body>
+        
+        
+<div class="sidenav">
+  <center>
+      <img src="assets/ico/logo.png" width="220" />
+      <a id="addbook" class="btn btn-success btn-md" href="#"  onclick="$('.addprod').modal()" style="margin-top: 25px; margin-bottom: 50px">Add Product</a> 
+      <b:form style="margin-top: 50px; margin-bottom: 50px">
+       
+      <b:inputText value="#{med.id}" required="true" mask="numeric" render-label="true" class="form-control query" placeholder="Input ID to Delete Or Update" style="width: 220px;" validatorMessage="INPUT ID FIRST" requiredMessage="INPUT ID FIRST"/>
+      <b:commandButton action="#{med.getById()}" tooltip-position="right" value="Edit" class="btn btn-success"/>
+      <b:button look="danger" value="Reset" onclick="$('.query').val('');return false;" iconAwesome="recycle" tooltip-position="right" style='margin: 5px'/>
+  </b:form>
+      <b:form style="margin-top: 300px"><b:commandButton action="#{stf.logout()}" value="Logout" look="danger" onclick="return confirm('Hey Do You Want To Logout ?');" class="menu"/></b:form>
+  </center>
+</div>
+<center>
+ <b:modal id="addprod" title="INSERT PRODUCT" styleClass="addprod">
+  <b:form horizontal="true">
+      <b:inputText placeholder="Medicine Name" label="Medicine Name:" colMd="10" labelColMd="2" value="#{med.name}" validatorMessage="PLEASE INPUT THE TITLE" class="med">
+    <f:facet name="prepend">
+      <b:icon name="plus" />
+    </f:facet>
+  <f:validateRequired/> 
+  </b:inputText>
+      
+  <b:selectOneMenu label="Medicine Type:" colMd="10" labelColMd="2" value="#{med.type}"  class="med" required="true" select2="true" style="width: 430px">
+      <f:selectItem itemLabel="(Please select)" itemValue="" />
+      <f:selectItem itemLabel="Green Labled" itemValue="Green_Labled" />
+      <f:selectItem itemLabel="Blue Labled" itemValue="Blue_Labled" />
+      <f:selectItem itemLabel="Herb Labled" itemValue="Herb_Labled" />
+      <f:selectItem itemLabel="Standarized Herb Labled" itemValue="Standarized_Herb_Labled" />
+      <f:selectItem itemLabel="K Labled" itemValue="K_Labled" />
+      <f:selectItem itemLabel="Narcotic Or Dope Labled" itemValue="Narcotic_Or_Dope_Labled" />
+      <f:facet name="prepend">
+      <b:iconAwesome name="plus" />
+      </f:facet>
+      <f:validateRequired/>
+  </b:selectOneMenu>
+      
+      <b:datepicker  rendered="true" label="Expire Date:" colMd="10" labelColMd="2" mode="icon-popup" required="true" requiredMessage="DATE CANT BE NULL" changeMonth="true" changeYear="true" value="#{med.expdate}" class="med"/>
+  
+  <b:inputText placeholder="99999" mask="integer" render-label="true" label="Medicine Stock:" colMd="10" labelColMd="2" class="med" value="#{med.stock}" validatorMessage="PLEASE INPUT THE PRODUCT STOCK">
+    <f:facet name="prepend">
+      <b:iconAwesome name="plus" />
+    </f:facet>
+  <f:validateRequired/> 
+  </b:inputText>
+  
+  <b:inputText mask="integer" render-label="true" placeholder="99999" label="Medicine Price IDR:" colMd="10" labelColMd="2" class="med" value="#{med.price}" validatorMessage="PLEASE INPUT PRODUCT PRICE">
+    <f:facet name="prepend">
+      <b:iconAwesome name="money" />
+    </f:facet>
+  <f:validateRequired/> 
+  </b:inputText>
+  
+      <b:commandButton action="#{med.saveMed()}" tooltip-position="right" span="12"
+    value="ADD PRODUCT" class="btn btn-success" ></b:commandButton><br/><br/>
+ </b:form>
+  <f:facet name="footer">    
+    <b:button value="Cancel" dismiss="modal" />
+  </f:facet>
+</b:modal> 
+</center>
+<div class="main">
+<h1>List Of All Product</h1>
+<b:messages/>
+<h:form>
+  <b:dataTable value="#{med.getAllMedicine()}"
+               var="m">
+    <b:dataTableColumn value="#{m.id}" label="iMed Product ID"/>
+    <b:dataTableColumn value="#{m.name}" label="Product Name" />
+    
+    <b:dataTableColumn value="#{m.type}"  label="Type Of Medicine" >
+        <center><img src="assets/labels/#{m.type}.jpg" width="35" height="35"/>
+        </center>
+    </b:dataTableColumn>
+    
+    <b:dataTableColumn value="#{m.expdate}" label="Expire Date">
+    </b:dataTableColumn>
+    <b:dataTableColumn value="#{m.stock}" label="Stock" />    
+    <b:dataTableColumn value="#{m.price}" label="Price IDR" />   
+  </b:dataTable>
+</h:form>
+</div>    
+    </h:body>
+</html>

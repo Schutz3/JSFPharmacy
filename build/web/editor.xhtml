@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>iMed-Product-Editor</title>
+        <link rel="icon" type="image/png" href="assets/ico/ico.png" />
+    </h:head>
+    <style>
+body {
+ height: 100%;
+ margin: 0;
+}
+.page-holder {
+    min-height: 100vh;
+}
+.bg-cover {
+    background-size: cover !important;
+}
+    </style>
+    <h:body>
+<center>
+  <b:form horizontal="true">
+      <h:inputHidden
+        class="form-control input-focus"
+        id="id-hidden"
+        value="#{med.id}"
+    />
+      <b:container>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="6">
+                  <img src="assets/ico/logo.png" width="300" style="margin-top: 50px; margin-bottom: 50px;" />
+                  <b ><h1 style="margin-bottom: 50px;">PRODUCT EDITOR</h1></b></b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Medicine Name :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                   <b:inputText placeholder="Medicine Name"  colMd="10" labelColMd="2" value="#{med.name}" validatorMessage="PLEASE INPUT THE TITLE" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Medicine Type:"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:selectOneMenu colMd="10" labelColMd="2" value="#{med.type}"  class="med" select2="true" style="width: 255px">
+                        <f:selectItem itemLabel="(Please select)" itemValue="" />
+                        <f:selectItem itemLabel="Green Labled" itemValue="Green_Labled" />
+                        <f:selectItem itemLabel="Blue Labled" itemValue="Blue_Labled" />
+                        <f:selectItem itemLabel="Herb Labled" itemValue="Herb_Labled" />
+                        <f:selectItem itemLabel="Standarized Herb Labled" itemValue="Standarized_Herb_Labled" />
+                        <f:selectItem itemLabel="K Labled" itemValue="K_Labled" />
+                        <f:selectItem itemLabel="Narcotic Or Dope Labled" itemValue="Narcotic_Or_Dope_Labled" />
+                        <f:facet name="prepend">
+                        <b:iconAwesome name="plus" />
+                        </f:facet>
+                    </b:selectOneMenu>
+              </b:column>
+              <b:column medium-screen="3"/>  
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Medicine Expired Date :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:datepicker  rendered="true"  colMd="10" labelColMd="2" mode="icon-popup" requiredMessage="DATE CANT BE NULL" changeMonth="true" changeYear="true" value="#{med.expdate}" class="med"/>
+              </b:column>
+              <b:column medium-screen="3"/>       
+          </b:row>
+          <b:row >
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Medicine Stock :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="99999" mask="numeric" render-label="true" colMd="10" labelColMd="2" class="med" value="#{med.stock}" validatorMessage="PLEASE INPUT THE PRODUCT STOCK">
+                    <f:facet name="prepend">
+                      <b:iconAwesome name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row >
+          <b:row style="margin-bottom: 50px;">
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Medicine Price :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                    <b:inputText mask="integer" render-label="true" placeholder="99999" colMd="10" labelColMd="2" class="med" value="#{med.price}" validatorMessage="PLEASE INPUT PRODUCT PRICE">
+                    <f:facet name="prepend">
+                      <b:iconAwesome name="money" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b:commandButton value="Back" action="#{med.goBack()}"   
+                 look="primary" style="width: 150px;"></b:commandButton>  
+              </b:column>
+              <b:column medium-screen="2">
+                  <b:commandButton action="#{med.deleteMed()}" tooltip-position="right"
+                                  accesskey="" value="DELETE PRODUCT" look="danger" style="width: 150px;" ></b:commandButton> 
+              </b:column>
+              <b:column medium-screen="2">
+                  <b:commandButton action="#{med.editMed()}" tooltip-position="right"
+                    accesskey="" value="EDIT PRODUCT" look="success" style="width: 150px;"></b:commandButton>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+      </b:container>
+ </b:form>
+</center>
+    </h:body>
+</html>
+
