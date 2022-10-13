@@ -41,10 +41,9 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.connection.url">jdbc:mysql://dbserver.crngxvhkbvzx.ap-southeast-3.rds.amazonaws.com:3306/imed?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/imed?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.username">admin</property>
-    <property name="hibernate.connection.password">Farharbatah0987</property>
+    <property name="hibernate.connection.username">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <mapping resource="pojo/Medicine.hbm.xml"/>
     <mapping resource="pojo/Staff.hbm.xml"/>
