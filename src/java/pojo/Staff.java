@@ -163,6 +163,10 @@ public class Staff  implements java.io.Serializable {
         this.icode = icode;
     }
 
+    public void setName(String adji) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 
 
