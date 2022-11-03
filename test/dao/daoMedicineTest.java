@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -71,6 +72,7 @@ public class daoMedicineTest {
     Medicine medicine = new Medicine();
     medicine.setName("paracetamol");
     medicine.setType("Green_Labled");
+    medicine.setExpdate(new GregorianCalendar(2024, 11, 29).getTime());
     medicine.setPrice(10000);
     medicine.setStock(123);
     
@@ -86,7 +88,7 @@ public class daoMedicineTest {
     public void testDeleteMed() {
     System.out.println("Test Delete Medicine");
     
-    Integer idProduct = 1;
+    Integer idProduct = 12;
     daoMedicine instance = new daoMedicine(); 
     Transaction transaction = null;
     Session session =imedUtil.getSessionFactory().openSession();
@@ -110,11 +112,12 @@ public class daoMedicineTest {
     Transaction transaction = null;
     Session session = imedUtil.getSessionFactory().openSession();
     
-    Integer id = 4;
+    Integer id = 11;
     Medicine medicine= new Medicine();
     medicine.setId(id);
     medicine.setName("paracetamol");
     medicine.setType("Green_Labled");
+    medicine.setExpdate(new GregorianCalendar(2024, 11, 29).getTime());
     medicine.setPrice(10000);
     medicine.setStock(123);
     
