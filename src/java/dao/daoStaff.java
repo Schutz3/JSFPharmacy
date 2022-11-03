@@ -76,21 +76,4 @@ public class daoStaff {
         }
         return usr;
     }
-    
-    public void editStf(String pw, int id) {
-        Transaction transaction = null;
-        Session session = imedUtil.getSessionFactory().openSession();
-        transaction = session.beginTransaction();
-        try {
-            Query q = session.createQuery("update Staff set password=:pw where id=:sid");
-            q.setString("pw", pw);
-            q.setInteger("sid", id);
-            q.executeUpdate();
-            transaction.commit();
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally{
-            session.close();
-        }
-    }
 }

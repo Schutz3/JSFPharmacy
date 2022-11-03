@@ -5,9 +5,7 @@ package pojo;
 import dao.daoMedicine;
 import java.util.Date;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import utility.imedUtil;
 
 /**
@@ -35,11 +33,6 @@ public class Medicine  implements java.io.Serializable {
     public String deleteMed() {
         daoMedicine med = new daoMedicine();
         med.deleteMed(id);
-        FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"PRODUCT DELETED",
-                                                "!"));
        id = null;
        name = "";
        type = "";
@@ -53,11 +46,6 @@ public class Medicine  implements java.io.Serializable {
         imedUtil frhn = new imedUtil();
         String validation = frhn.inputValid( name, price, stock);
         if (!validation.isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR,
-							"EDIT PRODUCT ERROR:",
-							validation));
        id = null;
        name = "";
        type = "";
@@ -68,11 +56,6 @@ public class Medicine  implements java.io.Serializable {
         } else {
             daoMedicine med = new daoMedicine();
             med.editMed(this);
-                FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"EDIT PRODUCT SUCCESS :",
-							""));
        id = null;
        name = "";
        type = "";
@@ -98,11 +81,6 @@ public class Medicine  implements java.io.Serializable {
                 price = listMed.get(0).price;
                 return "editor";
             } else {
-                FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR,
-							"PRODUCT WITH ID: "+ids+" NOT FOUND",
-							""));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -115,11 +93,6 @@ public class Medicine  implements java.io.Serializable {
         imedUtil frhn = new imedUtil();
         String validation = frhn.inputValid( name, price, stock);
             if (!validation.isEmpty()) {
-                FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR,
-							"ADD PRODUCT ERROR:",
-							validation));
             id = null;
             name = "";
             type = "";
@@ -131,11 +104,6 @@ public class Medicine  implements java.io.Serializable {
 
             daoMedicine med = new daoMedicine();
             med.addMed(this);
-                FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"PRODUCT "+name+" ADDED !",
-							""));
             id = null;
             name = "";
             type = "";

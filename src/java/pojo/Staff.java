@@ -3,9 +3,7 @@ package pojo;
 
 import dao.daoStaff;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import utility.imedUtil;
 
@@ -33,26 +31,12 @@ public class Staff  implements java.io.Serializable {
             if (st != null) {
                 username = st.get(0).username;
                 password = st.get(0).password;
-                HttpSession session = imedUtil.getSession();
-		session.setAttribute("username", username);
-                FacesContext.getCurrentInstance().addMessage(
-			null,
-			new FacesMessage(FacesMessage.SEVERITY_INFO,
-				"YOU LOGGED IN AS: ",
-				username));
                 return "dashboard";
             } else{
                 
             }
         } catch (Exception e) {
             System.out.println(e);
-            FacesContext.getCurrentInstance().addMessage(
-			null,
-			new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				"LOGGIN ERROR:   ",
-				"INCORRECT USERNAME OR PASSWORD!"));
-            username = "";
-            password = "";
         }
         return "index";
     }
@@ -67,63 +51,17 @@ public class Staff  implements java.io.Serializable {
         if(icode.equals(Code)){
            daoStaff add = new daoStaff();
          add.regstaff(this);
-         FacesContext.getCurrentInstance().addMessage(
-			null,
-			new FacesMessage(FacesMessage.SEVERITY_INFO,
-				"Success Registred As: "+username,
-				"Try Login Now"));
         username = "";
         password = "";
         icode = "";
         return "index"; 
         }else{
-            FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR,
-							"FAILED TO REGISTER",
-							"INVALID TOKEN"));
         username = "";
         password = "";
         icode = "";
         }
         return "index";
     }
-    
-    public String getByUsrId() {
-        daoStaff stf = new daoStaff();
-        List<Staff> listStf = stf.getByUsrID(username, id);
-        try {
-
-            if (!listStf.isEmpty()) {
-                id = listStf.get(0).id;
-                username = listStf.get(0).username;
-                password = listStf.get(0).password;
-                stf.editStf(password, id);
-                FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,
-							"SUCCESSFULLY UPDATED NEW PASSWORD!",
-							"Try Login Now"));
-                id = null;
-                username = "";
-                password = "";
-                return "index";
-            } else {
-                FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR,
-							"FAILED TO UPDATE PASSWORD",
-							"Wrong Username OR ID"));
-                id = null;
-                username = "";
-                password = "";
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return "index";
-    }
-    
 
     public Staff() {
     }
@@ -162,13 +100,6 @@ public class Staff  implements java.io.Serializable {
     public void setIcode(String icode) {
         this.icode = icode;
     }
-
-    public void setName(String adji) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-
 
 }
 

@@ -50,8 +50,8 @@ public class daoStaffTest {
     @Test
     public void testGetBy() {
         System.out.println("Login test");
-        String uEmail = "admin";
-        String uPass = "admin";
+        String uEmail = "iman";
+        String uPass = "iman";
         int empty = 0;
         daoStaff instance = new daoStaff();
         List<Staff> result = instance.getBy(uEmail, uPass);
