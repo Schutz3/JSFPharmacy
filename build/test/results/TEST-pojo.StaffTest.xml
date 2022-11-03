@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="RIG-1" name="dao.daoStaffTest" skipped="0" tests="2" time="1.094" timestamp="2022-11-03T08:50:49">
+<testsuite errors="0" failures="0" hostname="RIG-1" name="pojo.StaffTest" skipped="0" tests="11" time="1.163" timestamp="2022-11-03T08:50:53">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="ID" />
@@ -67,7 +67,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner dao.daoStaffTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Farhan\Documents\NetBeansProjects\MedPharmacy\build\test\results\TEST-dao.daoStaffTest.xml crashfile=C:\Users\Farhan\Documents\NetBeansProjects\MedPharmacy\build\junitvmwatcher7119730750355055688.properties propsfile=C:\Users\Farhan\Documents\NetBeansProjects\MedPharmacy\build\junit2104016656791618998.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner pojo.StaffTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Farhan\Documents\NetBeansProjects\MedPharmacy\build\test\results\TEST-pojo.StaffTest.xml crashfile=C:\Users\Farhan\Documents\NetBeansProjects\MedPharmacy\build\junitvmwatcher6290145129843321229.properties propsfile=C:\Users\Farhan\Documents\NetBeansProjects\MedPharmacy\build\junit5744307950372369278.properties" />
     <property name="build.classes.dir" value="build/web/WEB-INF/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="ant.file.type.MedPharmacy-impl" value="file" />
@@ -445,53 +445,66 @@
     <property name="war.ear.name" value="MedPharmacy.war" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\javaee-doc-api.jar" />
   </properties>
-  <testcase classname="dao.daoStaffTest" name="testGetBy" time="1.008" />
-  <testcase classname="dao.daoStaffTest" name="testRegstaff" time="0.046" />
-  <system-out><![CDATA[***** Start Testing *****
-Login test
-1
-***** End Testing *****
-***** Start Testing *****
-Test Register
-***** End Testing *****
+  <testcase classname="pojo.StaffTest" name="testSetPassword" time="0.005" />
+  <testcase classname="pojo.StaffTest" name="testGetPassword" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testGetIcode" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testGetId" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testLogin" time="1.05" />
+  <testcase classname="pojo.StaffTest" name="testSetId" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testRegraff" time="0.066" />
+  <testcase classname="pojo.StaffTest" name="testSetUsername" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testGetUsername" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testLogout" time="0.0" />
+  <testcase classname="pojo.StaffTest" name="testSetIcode" time="0.0" />
+  <system-out><![CDATA[setPassword
+getPassword
+getIcode
+getId
+login Test
+setId
+regraff
+setUsername
+getUsername
+logout Test
+setIcode
 ]]></system-out>
-  <system-err><![CDATA[Nov 03, 2022 3:50:49 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+  <system-err><![CDATA[Nov 03, 2022 3:50:53 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
 INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-Nov 03, 2022 3:50:49 PM org.hibernate.Version logVersion
+Nov 03, 2022 3:50:53 PM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {4.3.1.Final}
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Environment <clinit>
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Environment <clinit>
 INFO: HHH000206: hibernate.properties not found
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Environment buildBytecodeProvider
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Environment buildBytecodeProvider
 INFO: HHH000021: Bytecode provider name : javassist
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Configuration configure
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Configuration configure
 INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Configuration getConfigurationInputStream
 INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
-Nov 03, 2022 3:50:49 PM org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
+Nov 03, 2022 3:50:53 PM org.hibernate.internal.util.xml.DTDEntityResolver resolveEntity
 WARN: HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Configuration addResource
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Configuration addResource
 INFO: HHH000221: Reading mappings from resource: pojo/Medicine.hbm.xml
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Configuration addResource
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Configuration addResource
 INFO: HHH000221: Reading mappings from resource: pojo/Staff.hbm.xml
-Nov 03, 2022 3:50:49 PM org.hibernate.cfg.Configuration doConfigure
+Nov 03, 2022 3:50:53 PM org.hibernate.cfg.Configuration doConfigure
 INFO: HHH000041: Configured SessionFactory: null
-Nov 03, 2022 3:50:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+Nov 03, 2022 3:50:53 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 WARN: HHH000402: Using Hibernate built-in connection pool (not for production use!)
-Nov 03, 2022 3:50:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+Nov 03, 2022 3:50:53 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/imed?zeroDateTimeBehavior=convertToNull]
-Nov 03, 2022 3:50:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+Nov 03, 2022 3:50:53 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000046: Connection properties: {user=root}
-Nov 03, 2022 3:50:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+Nov 03, 2022 3:50:53 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000006: Autocommit mode: false
-Nov 03, 2022 3:50:49 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+Nov 03, 2022 3:50:53 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
-Nov 03, 2022 3:50:49 PM org.hibernate.dialect.Dialect <init>
+Nov 03, 2022 3:50:53 PM org.hibernate.dialect.Dialect <init>
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-Nov 03, 2022 3:50:49 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+Nov 03, 2022 3:50:53 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
 INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
-Nov 03, 2022 3:50:49 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+Nov 03, 2022 3:50:53 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
 INFO: HHH000397: Using ASTQueryTranslatorFactory
-Nov 03, 2022 3:50:49 PM org.hibernate.validator.internal.util.Version <clinit>
+Nov 03, 2022 3:50:53 PM org.hibernate.validator.internal.util.Version <clinit>
 INFO: HV000001: Hibernate Validator 5.1.2.Final
 ]]></system-err>
 </testsuite>

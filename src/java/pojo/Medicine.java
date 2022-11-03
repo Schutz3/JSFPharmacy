@@ -70,8 +70,6 @@ public class Medicine  implements java.io.Serializable {
         String ids = Integer.toString(id);
         daoMedicine med = new daoMedicine();
         List<Medicine> listMed = med.getbyID(ids);
-        try {
-
             if (!listMed.isEmpty()) {
                 id = listMed.get(0).id;
                 name = listMed.get(0).name;
@@ -81,11 +79,8 @@ public class Medicine  implements java.io.Serializable {
                 price = listMed.get(0).price;
                 return "editor";
             } else {
+                return "dashboard";
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return "dashboard";
     }
     
     

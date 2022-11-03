@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>imedUtil.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;MedPharmacy&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">utility</a> &gt; <span class="el_source">imedUtil.java</span></div><h1>imedUtil.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package utility;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.SessionFactory;
+
+/**
+ * Hibernate Utility class with a convenient method to get Session Factory
+ * object.
+ *
+ * @author Farhan
+ */
+<span class="fc" id="L23">public class imedUtil {</span>
+
+    private static final SessionFactory sessionFactory;
+    
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+<span class="fc" id="L31">            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();</span>
+<span class="nc" id="L32">        } catch (Throwable ex) {</span>
+            // Log the exception. 
+<span class="nc" id="L34">            System.err.println(&quot;Initial SessionFactory creation failed.&quot; + ex);</span>
+<span class="nc" id="L35">            throw new ExceptionInInitializerError(ex);</span>
+<span class="fc" id="L36">        }</span>
+<span class="fc" id="L37">    }</span>
+    
+    public static SessionFactory getSessionFactory() {
+<span class="fc" id="L40">        return sessionFactory;</span>
+    }
+    
+    	public static HttpSession getSession() {
+<span class="nc" id="L44">		return (HttpSession) FacesContext.getCurrentInstance()</span>
+<span class="nc" id="L45">				.getExternalContext().getSession(false);</span>
+	}
+
+	public static HttpServletRequest getRequest() {
+<span class="nc" id="L49">		return (HttpServletRequest) FacesContext.getCurrentInstance()</span>
+<span class="nc" id="L50">				.getExternalContext().getRequest();</span>
+	}
+
+	public static String getUserName() {
+<span class="nc" id="L54">		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()</span>
+<span class="nc" id="L55">				.getExternalContext().getSession(false);</span>
+<span class="nc" id="L56">		return session.getAttribute(&quot;username&quot;).toString();</span>
+	}
+
+	public static String getUserId() {
+<span class="nc" id="L60">		HttpSession session = getSession();</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">		if (session != null)</span>
+<span class="nc" id="L62">			return (String) session.getAttribute(&quot;userid&quot;);</span>
+		else
+<span class="nc" id="L64">			return null;</span>
+	}
+        
+    public String inputValid( String name, int price, int stock){
+<span class="fc" id="L68">     String PRICE = Integer.toString(price);</span>
+<span class="fc" id="L69">     String STOCK = Integer.toString(stock);</span>
+<span class="fc" id="L70">     ArrayList&lt;String&gt; errList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L71">     String alert = &quot;&quot;;</span>
+     
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if (!name.matches(&quot;[^&lt;&gt;{}]+&quot;)){</span>
+<span class="fc" id="L74">            errList.add(&quot; Invalid Medicine Name &quot;);</span>
+            }
+<span class="pc bpc" id="L76" title="2 of 4 branches missed.">            if(!STOCK.matches(&quot;^[1-9]\\d*$&quot;) || !PRICE.matches(&quot;^[1-9]\\d*$&quot;)){</span>
+<span class="nc" id="L77">            errList.add(&quot; Invalid Medicine Stock Or Price &quot;);</span>
+            }
+            
+<span class="fc bfc" id="L80" title="All 2 branches covered.">           if (!errList.isEmpty()) {</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">                for (String msg : errList) {</span>
+<span class="fc" id="L82">                alert += (&quot; AND &quot; +msg );</span>
+<span class="fc" id="L83">            }</span>
+           }  
+<span class="fc" id="L85">           return alert;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

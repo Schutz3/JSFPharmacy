@@ -6,6 +6,7 @@
 package pojo;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -46,9 +47,8 @@ public class MedicineTest {
     public void testGetAllMedicine() {
         System.out.println("getAllMedicine");
         Medicine instance = new Medicine();
-        List<Medicine> expResult = null;
         List<Medicine> result = instance.getAllMedicine();
-        assertEquals(expResult, result);
+        assertFalse(result.isEmpty());
     }
 
     /**
@@ -58,7 +58,8 @@ public class MedicineTest {
     public void testDeleteMed() {
         System.out.println("deleteMed");
         Medicine instance = new Medicine();
-        String expResult = "";
+        instance.setId(0);
+        String expResult = "dashboard";
         String result = instance.deleteMed();
         assertEquals(expResult, result);
     }
@@ -70,11 +71,32 @@ public class MedicineTest {
     public void testEditMed() {
         System.out.println("editMed");
         Medicine instance = new Medicine();
-        String expResult = "";
+        instance.setId(15);
+        instance.setName("Anggur Merah");
+        instance.setType("Herb_Labled");
+        instance.setExpdate(new GregorianCalendar(2024, 11, 29).getTime());
+        instance.setStock(99);
+        instance.setPrice(60000);
+        String expResult = "dashboard";
         String result = instance.editMed();
         assertEquals(expResult, result);
     }
 
+    @Test
+    public void testInvalidEditMed() {
+        System.out.println("editMed");
+        Medicine instance = new Medicine();
+        instance.setId(15);
+        instance.setName("{Anggur Merah}");
+        instance.setType("Herb_Labled");
+        instance.setExpdate(new GregorianCalendar(2024, 11, 29).getTime());
+        instance.setStock(99);
+        instance.setPrice(60000);
+        String expResult = "dashboard";
+        String result = instance.editMed();
+        assertEquals(expResult, result);
+    }
+    
     /**
      * Test of getById method, of class Medicine.
      */
@@ -82,7 +104,18 @@ public class MedicineTest {
     public void testGetById() {
         System.out.println("getById");
         Medicine instance = new Medicine();
-        String expResult = "";
+        instance.setId(15);
+        String expResult = "editor";
+        String result = instance.getById();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testGetByInvalidId() {
+        System.out.println("getByInvalidId");
+        Medicine instance = new Medicine();
+        instance.setId(1);
+        String expResult = "dashboard";
         String result = instance.getById();
         assertEquals(expResult, result);
     }
@@ -94,7 +127,26 @@ public class MedicineTest {
     public void testSaveMed() {
         System.out.println("saveMed");
         Medicine instance = new Medicine();
-        String expResult = "";
+        instance.setName("Iceland");
+        instance.setType("Herb_Labled");
+        instance.setPrice(90000);
+        instance.setStock(80);
+        instance.setExpdate(new GregorianCalendar(2024, 11, 29).getTime());
+        String expResult = "dashboard";
+        String result = instance.saveMed();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testInvalidSaveMed() {
+        System.out.println("saveMed");
+        Medicine instance = new Medicine();
+        instance.setName("{Iceland}");
+        instance.setType("Herb_Labled");
+        instance.setPrice(90000);
+        instance.setStock(80);
+        instance.setExpdate(new GregorianCalendar(2024, 11, 29).getTime());
+        String expResult = "dashboard";
         String result = instance.saveMed();
         assertEquals(expResult, result);
     }
@@ -106,7 +158,7 @@ public class MedicineTest {
     public void testGoBack() {
         System.out.println("goBack");
         Medicine instance = new Medicine();
-        String expResult = "";
+        String expResult = "dashboard";
         String result = instance.goBack();
         assertEquals(expResult, result);
     }
@@ -118,7 +170,8 @@ public class MedicineTest {
     public void testGetId() {
         System.out.println("getId");
         Medicine instance = new Medicine();
-        Integer expResult = null;
+        Integer expResult = 15;
+        instance.setId(expResult);
         Integer result = instance.getId();
         assertEquals(expResult, result);
     }
@@ -129,7 +182,7 @@ public class MedicineTest {
     @Test
     public void testSetId() {
         System.out.println("setId");
-        Integer id = null;
+        Integer id = 15;
         Medicine instance = new Medicine();
         instance.setId(id);
     }
@@ -141,7 +194,8 @@ public class MedicineTest {
     public void testGetName() {
         System.out.println("getName");
         Medicine instance = new Medicine();
-        String expResult = "";
+        String expResult = "Anggur Merah";
+        instance.setName(expResult);
         String result = instance.getName();
         assertEquals(expResult, result);
     }
@@ -152,7 +206,7 @@ public class MedicineTest {
     @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
+        String name = "Anggur Merah";
         Medicine instance = new Medicine();
         instance.setName(name);
     }
@@ -164,7 +218,8 @@ public class MedicineTest {
     public void testGetType() {
         System.out.println("getType");
         Medicine instance = new Medicine();
-        String expResult = "";
+        String expResult = "Herb_Labled";
+        instance.setType(expResult);
         String result = instance.getType();
         assertEquals(expResult, result);
     }
@@ -175,7 +230,7 @@ public class MedicineTest {
     @Test
     public void testSetType() {
         System.out.println("setType");
-        String type = "";
+        String type = "Herb_Labled";
         Medicine instance = new Medicine();
         instance.setType(type);
     }
@@ -187,7 +242,8 @@ public class MedicineTest {
     public void testGetExpdate() {
         System.out.println("getExpdate");
         Medicine instance = new Medicine();
-        Date expResult = null;
+        Date expResult = new GregorianCalendar(2024, 11, 29).getTime();
+        instance.setExpdate(expResult);
         Date result = instance.getExpdate();
         assertEquals(expResult, result);
     }
@@ -198,7 +254,7 @@ public class MedicineTest {
     @Test
     public void testSetExpdate() {
         System.out.println("setExpdate");
-        Date expdate = null;
+        Date expdate = new GregorianCalendar(2024, 11, 29).getTime();
         Medicine instance = new Medicine();
         instance.setExpdate(expdate);
     }
@@ -210,7 +266,8 @@ public class MedicineTest {
     public void testGetStock() {
         System.out.println("getStock");
         Medicine instance = new Medicine();
-        int expResult = 0;
+        int expResult = 90;
+        instance.setStock(expResult);
         int result = instance.getStock();
         assertEquals(expResult, result);
     }
@@ -221,7 +278,7 @@ public class MedicineTest {
     @Test
     public void testSetStock() {
         System.out.println("setStock");
-        int stock = 0;
+        int stock = 90;
         Medicine instance = new Medicine();
         instance.setStock(stock);
     }
@@ -233,7 +290,8 @@ public class MedicineTest {
     public void testGetPrice() {
         System.out.println("getPrice");
         Medicine instance = new Medicine();
-        int expResult = 0;
+        int expResult = 90000;
+        instance.setPrice(expResult);
         int result = instance.getPrice();
         assertEquals(expResult, result);
     }
@@ -244,7 +302,7 @@ public class MedicineTest {
     @Test
     public void testSetPrice() {
         System.out.println("setPrice");
-        int price = 0;
+        int price = 90000;
         Medicine instance = new Medicine();
         instance.setPrice(price);
     }
