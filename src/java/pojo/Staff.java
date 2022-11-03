@@ -20,7 +20,7 @@ public class Staff  implements java.io.Serializable {
      private Integer id;
      private String username;
      private String password;
-     String Code = "minerva365";
+     String Code = "Schutz3";
      private String icode;
      
      
@@ -41,9 +41,6 @@ public class Staff  implements java.io.Serializable {
         return "index";
     }
     public String logout() {
-	HttpSession session = imedUtil.getSession();
-	session.invalidate();
-        
 	return "index";
     }
     
